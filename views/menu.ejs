@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/menu.js"></script>
+</head>
+<body ng-app="menu" ng-controller="menu">
+<div class="panel-group" style="width:50%; margin-left: 25%">
+    <div class="panel panel-warning">
+      <div class="panel-heading">Menu</div>
+      <table>
+       <thead>
+      <tr>
+      <th width ="50px"></th>
+        <th width="150px">Items</th>
+        <th width="50px">Price</th>
+        <th width="50px">Qty</th>
+     	<th width="100px"></th>	
+     	<th width="50px"</th>
+      </tr>
+    </thead>
+    
+      	<tr class="success" ng-repeat = "i in items" height="40px">
+      		<td></td>
+      		<td>
+      			<lablel>
+      				{{i.item}}	
+      			</label>
+      		</td>
+      		<td>
+      			<lable>
+      				$ {{i.price}}
+      			</label>
+      		</td>
+      		<td>
+      			{{i.count}}
+      		</td>
+      		<td> 
+      			  <button class="btn btn-warning" ng-class="{active:i.active}" ng-click="addOrder(i)">Select</button>
+      		</td>
+      		<td> 
+      			  <button class="btn btn-warning" ng-class="{active:i.active}" ng-click="remove(i)">Remove</button>
+      		</td>
+      	</tr>
+      <tr height="50px"><td></td><td></td>
+      <td> <input type="submit"  class="btn btn-warning" ng-click="order();" value="Order" /></td>
+      <tr/>
+      </table>
+      
+     	 <div class="col-md-12" style="margin: 10px;">
+			<div class="alert alert-warning" ng-hide="invalid_login">
+				<table>
+				<tr>
+					<th width="150px"> Item Name</th>
+					<th width="50px"> Qty</th>
+					<th width="50px"> Total</th>
+				</tr>
+				<tr ng-repeat = "i in finalList">
+					<td>
+      			<lablel>
+      				{{i.item}}	
+      			</label>
+      		</td>
+      		<td>
+      			<lable>
+      				{{i.quantity}}
+      			</label>
+      		</td>
+      		<td>
+      			$ {{i.price}}
+      		</td>
+				</tr>
+				<tr><td><hr></td>
+				<td><hr></td>
+				<td><hr></td></tr>
+				<tr>
+					<td>Total: </td>
+					<td></td>
+					<td>$ {{total}}</td>					
+				</table>
+			</div>
+		</div>			
+		
+		
+     	 <div class="col-md-12" style="margin: 10px;">
+			<div class="alert alert-danger" ng-hide="noOrder">
+				<strong>No item added</strong>
+			</div>
+		</div>				
+		
+		
+		
+		
+      
+      <div class="panel-body">La Victoria</div>
+    </div>
+    
+
+</body>
